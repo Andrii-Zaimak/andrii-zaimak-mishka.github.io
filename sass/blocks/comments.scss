@@ -1,0 +1,253 @@
+//Start main styles
+.comments {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 6px;
+
+    @include background-image("../img/bg-zigzag-line.svg", repeat-x, left bottom, auto 6px);
+  }
+}
+
+.comments__wrapper {
+  @include container-fluid();
+  text-align: left;
+}
+
+.comments__title {
+  margin: 0;
+  padding-top: 55px;
+
+  @include font-style(30px, 25px, bold, $color-black);
+}
+
+.comments__list {
+  padding-top: 10px;
+}
+
+.comments__item {
+  margin: 0;
+  padding: 0;
+}
+
+.comments__item-text {
+  @include font-style(30px, 15px, regular, $color-dark-grey);
+}
+
+.comments__author-name {
+  display: block;
+  padding-top: 11px;
+
+  @include font-style(24px, 18px, bold, $color-black);
+  font-style: normal;
+}
+
+.comments__author-mail {
+  padding-top: 4px;
+  @include font-style(30px, 18px, regular, $color-black);
+}
+
+//Start pagination style
+.comments__pagination {
+  display: flex;
+  margin-top: 29px;
+}
+
+.comments__btn {
+  width: 50%;
+
+  border: $border-style;
+
+  font-size: 0px;
+  text-indent: -9999px;
+
+  //Start reset button style
+  &:hover,
+  &:active {
+    background-color: transparent;
+    border: $border-style;
+  }
+
+  &:active {
+    border: $border-style;
+  }
+  //End reset button style
+
+  &--prev,
+  &--next {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0.6;
+      }
+    }
+
+    &:active {
+      &::after {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &--next::after {
+    @include background-image("../img/icon-right-arrow.svg", no-repeat, 50% 50%);
+  }
+  &--prev::after {
+    @include background-image("../img/icon-left-arrow.svg", no-repeat, 50% 50%);
+  }
+}
+
+//End pagination style
+
+.comments__write-to-us {
+  margin-top: 37px;
+  margin-bottom: 44px;
+}
+
+//End main styles
+
+//Start tablet styles
+@media #{$tablet-widths} {
+  .comments {
+    &::after {
+      height: 15px;
+
+      background-position: -10px bottom;
+      background-size: auto 15px;
+    }
+  }
+
+  .comments__wrapper {
+    padding-bottom: 114px;
+    display: flex;
+    flex-wrap: wrap;
+    @include background-image("../img/review@1x.jpg", no-repeat, left 80px);
+
+    @media (min-width: 768px) and (min-resolution: 144dpi), (min-width: 768px) and (min-resolution: 1.5dppx) {
+      @include background-image("../img/review@2x.jpg", no-repeat, left 80px);
+      background-size: 350px auto;
+    }
+  }
+
+  .comments__title {
+    order: 1;
+    margin-left: -5px;
+    padding-top: 157px;
+
+    @include font-style(50px, 43px, bold, $color-black);
+  }
+
+  .comments__list {
+    order: 3;
+    padding-top: 28px;
+  }
+
+  .comments__item-text {
+    @include font-style(30px, 17px, regular, $color-dark-grey);
+  }
+
+  .comments__author-name {
+    padding-top: 41px;
+
+    @include font-style(24px, 17px, bold, $color-black);
+  }
+
+  .comments__author-mail {
+    padding-top: 4px;
+    @include font-style(30px, 17px, regular, $color-black);
+  }
+
+  .comments__pagination {
+    order: 4;
+    width: 173px;
+    margin-left: auto;
+    margin-right: 1px;
+    margin-top: -56px;
+  }
+
+  .comments__btn--prev,
+  .comments__btn--next {
+    border-style: none;
+
+    &:hover,
+    &:active {
+      border-style: none;
+    }
+  }
+
+  .comments__write-to-us {
+    order: 2;
+    width: 175px;
+    margin-top: 159px;
+    margin-bottom: 0px;
+    margin-left: auto;
+  }
+}
+
+//End tablet styles
+
+//Start tablet styles
+@media #{$desktop-widths} {
+  .comments {
+    &::after {
+      height: 23px;
+
+      background-position: 29px bottom;
+      background-size: auto 23px;
+    }
+  }
+
+  .comments__wrapper {
+    padding-bottom: 160px;
+    background-position: $desktop-horizontal-padding 87px;
+  }
+
+  .comments__title,
+  .comments__list {
+    padding-left: 175px;
+  }
+
+  .comments__title {
+    margin-left: -4px;
+    padding-top: 158px;
+
+    @include font-style(57px, 53px, bold, $color-black);
+  }
+
+  .comments__list {
+    padding-top: 28px;
+  }
+
+  .comments__item-text {
+    padding-right: 105px;
+  }
+
+  .comments__author-name {
+    padding-top: 23px;
+  }
+
+  .comments__pagination {
+    margin-top: -57px;
+  }
+
+  .comments__write-to-us {
+    margin-top: 166px;
+  }
+}
+
+//End tablet styles

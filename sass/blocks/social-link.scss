@@ -1,0 +1,40 @@
+.social-link {
+  display: inline-block;
+
+  width: 45px;
+  height: 45px;
+
+  font-size: 0px;
+
+  vertical-align: baseline;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  svg {
+    transition: opacity 0.3s ease,
+    fill 0.3s ease;
+  }
+
+  &:link,
+  &:visited {
+    svg {
+      fill: black;
+    }
+  }
+
+  &:hover {
+    svg {
+      fill: #46c1ae;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: #46c1ae;
+      opacity: 0.3;
+    }
+  }
+
+}

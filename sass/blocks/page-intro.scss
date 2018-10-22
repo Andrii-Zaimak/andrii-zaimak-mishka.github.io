@@ -1,0 +1,304 @@
+@mixin page-intro__nav-item-style($up-color, $over-color, $down-color) {
+  background-color: $up-color;
+
+  transition: background-color 0.3s ease,
+  margin 0.3s ease;
+
+  a {
+    transition: padding 0.3s ease;
+  }
+
+  span {
+    transition: color 0.3s ease;
+  }
+
+  svg {
+    fill: #149080;
+    opacity: 0.5;
+
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    background-color: $over-color;
+
+    //Start up effect
+    margin-top: -5px;
+    a {
+      padding-bottom: 5px;
+    }
+    //End up effect
+
+    svg {
+      opacity: 0.7;
+    }
+  }
+
+  &:active {
+    background-color: $down-color;
+
+    span {
+      color: rgba($color-white, 0.3);
+    }
+
+    svg {
+      opacity: 0.3;
+    }
+  }
+}
+
+.page-intro {
+  background-color: #f9f9f9;
+
+  border-top: $border-style;
+  margin-top: -1px;
+}
+
+//Start title style
+.page-intro__title-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  height: 177px;
+
+  padding-top: 52px;
+
+  &--index {
+    height: 282px;
+    padding-top: 52px;
+
+    @include background-image("../img/hero-mobile@1x.jpg", no-repeat, 50% -18px);
+
+    @media (max-width: 767px) and (min-resolution: 144dpi),
+    (max-width: 767px) and (min-resolution: 1.5dppx) {
+      @include background-image("../img/hero-mobile@2x.jpg", no-repeat, 50% -18px);
+      background-size: 768px auto;
+    }
+  }
+}
+
+.page-intro__title {
+  @include font-style(30px, 27px, bold, $color-black);
+  text-align: center;
+}
+
+//End title style
+
+//Start nav style
+.page-intro__nav-list {
+  display: flex;
+  flex-direction: column;
+
+  @include reset-list-style();
+}
+
+.page-intro__nav-item {
+  flex-grow: 1;
+
+  &--interior {
+    position: relative;
+    @include page-intro__nav-item-style(#63d1bb, #59d5bc, #59d5bc);
+
+    svg {
+      position: absolute;
+      top: 23px;
+      right: 37px
+    }
+  }
+
+  &--toys {
+    position: relative;
+    @include page-intro__nav-item-style(#56c3b2, #46c1ae, #46c1ae);
+
+    svg {
+      position: absolute;
+      top: 21px;
+      right: 27px
+    }
+  }
+}
+
+.page-intro__nav-link {
+  @include reset-a-style();
+
+  @include font-style(24px, 19px, bold, $color-white);
+  text-align: left;
+
+  span {
+    display: inline-block;
+    width: 150px;
+
+    padding-top: 26px;
+    padding-bottom: 29px;
+    padding-left: $mobile-horizontal-padding;
+
+    vertical-align: middle;
+  }
+}
+
+//End nav style
+
+//Start mobile style
+@media #{$mobile-widths-only} {
+  .page-intro__title {
+    &--index {
+      width: 250px;
+    }
+  }
+
+  .page-intro__title-container {
+    &--index {
+      padding-left: $mobile-horizontal-padding;
+      padding-right: $mobile-horizontal-padding;
+    }
+  }
+}
+
+//End mobile style
+
+//Start tablet style
+@media #{$tablet-widths} {
+
+  .page-intro {
+    position: relative;
+    margin-top: -61px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+
+      @include background-image("../img/bg-zigzag-fill.svg", repeat-x, -5px top, auto 23px);
+    }
+  }
+
+  .page-intro__wrapper {
+    @include container-fluid();
+  }
+
+  //Start title style
+  .page-intro__title-container {
+    height: 226px;
+
+    padding-top: 66px;
+    padding-left: 10px;
+
+    &--index {
+      height: 626px;
+      padding-top: 125px;
+      padding-left: 0px;
+
+      @include background-image("../img/hero-desktop@1x.jpg", no-repeat, 50% 1px);
+
+      @media (min-width: 768px) and (min-resolution: 144dpi),
+      (min-width: 768px) and (min-resolution: 1.5dppx) {
+        @include background-image("../img/hero-desktop@2x.jpg", no-repeat, 50% 1px);
+        background-size: 768px auto;
+      }
+    }
+  }
+
+  .page-intro__title {
+    @include font-style(50px, 43px, bold, $color-black);
+    text-align: center;
+
+    &--index {
+      width: 550px;
+    }
+  }
+  //End title style
+
+  //Start nav style
+  .page-intro__nav-list {
+    flex-direction: row;
+  }
+
+  .page-intro__nav-item {
+    width: 50%;
+
+    &--interior {
+      svg {
+        top: 30px;
+        right: 37px;
+      }
+    }
+
+    &--toys {
+      svg {
+        top: 32px;
+        right: 34px;
+      }
+    }
+  }
+
+  .page-intro__nav-link {
+    @include font-style(30px, 20px, bold, $color-white);
+
+    span {
+      padding-top: 28px;
+      padding-bottom: 31px;
+      padding-left: 35px;
+    }
+  }
+  //End nav style
+}
+
+//End tablet style
+
+//Start desktop style
+@media #{$desktop-widths} {
+  .page-intro {
+    margin-top: -59px;
+
+    &::after {
+      bottom: -16px;
+      height: 34px;
+
+      background-size: auto 34px;
+    }
+  }
+
+  //Start title style
+  .page-intro__title-container {
+    height: 255px;
+    margin-left: -6px;
+    padding-top: 57px;
+
+    &--index {
+      height: 626px;
+      margin-left: 0px;
+      padding-top: 117px;
+
+      @media (min-width: 1150px) and (min-resolution: 144dpi),
+      (min-width: 1150px) and (min-resolution: 1.5dppx) {
+        @include background-image("../img/hero-desktop@2x.jpg", no-repeat, 50% 1px);
+        background-size: 1150px auto;
+      }
+    }
+  }
+
+  .page-intro__title {
+    @include font-style(57px, 53px, bold, $color-black);
+    text-align: center;
+
+    &--index {
+      width: 650px;
+    }
+  }
+  //End title style
+
+  //Start nav style
+  .page-intro__nav-link {
+
+    span {
+      padding-left: 37px;
+    }
+  }
+  //End nav style
+}
+
+//End desktop style

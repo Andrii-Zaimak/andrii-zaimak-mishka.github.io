@@ -1,0 +1,136 @@
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.popup__container {
+  position: relative;
+  top: 25%;
+  width: 566px;
+  margin: 0 auto;
+  padding: 0 105px;
+
+  background-color: $color-white;
+  border: $border-style;
+
+  text-align: center;
+
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.popup__title {
+  margin: 0;
+  padding: 0;
+
+  margin-top: 30px;
+
+  @include font-style(57px, 30px, bold, $color-black);
+  text-transform: uppercase;
+}
+
+.popup__description {
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+
+  @include font-style(30px, 17px, regular, $color-dark-grey);
+}
+
+.popup__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  margin-top: 25px;
+  padding: 0;
+}
+
+.popup__item-container {
+  display: inline-block;
+  width: 32%;
+
+  vertical-align: middle;
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked + .popup__item {
+      border-color: rgba(98, 209, 186, 1);
+    }
+  }
+}
+
+.popup__item {
+  display: inline-block;
+  width: 112px;
+  height: 52px;
+  padding-top: 17px;
+
+  border: 2px solid rgba(68, 68, 68, 0.1);
+
+  cursor: pointer;
+
+  @include font-style(16px, 17px, bold, $color-dark-grey);
+  text-transform: uppercase;
+  vertical-align: middle;
+
+  &:hover {
+    border: 2px solid rgba(68, 68, 68, 0.3);
+  }
+
+}
+
+.popup__btn-add {
+  flex-grow: 1;
+  margin-top: 31px;
+  margin-bottom: 45px;
+  padding-top: 1px;
+
+  background-color: $color-aqua;
+  border: none;
+  outline: none;
+
+  color: $color-white;
+
+  &:hover,
+  &:active {
+    padding-top: 1px;
+
+    background-color: $color-aqua;
+  }
+}
+
+//Start mobile only style
+@media #{$mobile-widths-only} {
+  .popup__container {
+    width: 100%;
+
+    border-left-style: none;
+    border-right-style: none;
+
+    padding: 0 $mobile-horizontal-padding;
+  }
+
+  .popup__title {
+    padding: 0 21%;
+
+    @include font-style(30px, 25px, bold, $color-black);
+  }
+
+  .popup__description {
+    @include font-style(30px, 15px, regular, $color-dark-grey);
+  }
+
+  .popup__item {
+    width: 82px;
+  }
+}
+
+//End mobile only style
